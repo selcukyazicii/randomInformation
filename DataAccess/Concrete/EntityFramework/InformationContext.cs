@@ -16,5 +16,9 @@ namespace DataAccess.Concrete.EntityFramework
 
         }
         public DbSet<Information> Informations { get; set; }
+        public DbSet<Game> Games { get; set; }
+        public DbSet<GameType> GameTypes { get; set; }
+        public DbSet<Game2> Games2 { get; set; }
+
     }
 }

@@ -2,28 +2,29 @@
 
 namespace DataAccess.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialGame2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Informations",
+                name: "Games2",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    game_type = table.Column<int>(type: "int", nullable: false),
                     content = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Informations", x => x.id);
+                    table.PrimaryKey("PK_Games2", x => x.id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Informations");
+                name: "Games2");
         }
     }
 }

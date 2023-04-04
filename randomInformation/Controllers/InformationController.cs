@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Abstract;
+using DataAccess.Abstract;
+using Entity.Concrete;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace randomInformation.Controllers
 {

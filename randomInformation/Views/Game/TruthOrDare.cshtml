@@ -1,0 +1,159 @@
+﻿@model Entity.Concrete.Game
+
+@{
+    ViewData["Title"] = "TruthOrDare";
+    Layout = "~/Views/Shared/_TruthLayout.cshtml";
+}
+
+<form enctype="multipart/form-data">
+    <div class="container">
+        <div class="brand-logo"></div>
+        <div class="brand-title">Doğruluk Cesaretlilik ?</div>
+        <button id="truth" onclick="Truth()" type="button">DOĞRULUK</button>
+        <div class="inputs">
+            <div style="margin-left:30px;font-size:larger" id="deneme"></div>
+            <button onclick="Dare()" type="button">CESARET</button>
+        </div>
+        <a href="https://instagram.com/selckyzci" target="_blank">developed by selckyzci</a>
+    </div>
+</form>
+
+@section Scripts{
+    <script>
+        function Truth() {
+            $.ajax({
+                url: "/Game/GetTruth/",
+                method: "Get",
+                success: function (data) {
+                    document.getElementById('deneme').innerHTML = data.content;
+                }
+            })
+        }
+
+        function Dare() {
+            $.ajax({
+                url: "/Game/GetDare/",
+                method: "Get",
+                success: function (data) {
+                    document.getElementById('deneme').innerHTML = data.content;
+                }
+            })
+        }
+    </script>
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<style>
+
+    input {
+        caret-color: red;
+    }
+
+    body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #ecf0f3;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        place-items: center;
+        overflow: hidden;
+        font-family: poppins;
+    }
+
+    .container {
+        position: relative;
+        width: 350px;
+        height: 500px;
+        border-radius: 20px;
+        padding: 40px;
+        box-sizing: border-box;
+        background: #ecf0f3;
+        box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    }
+
+
+
+    .brand-title {
+        margin-top: 10px;
+        font-weight: 900;
+        font-size: 1.8rem;
+        color: #1DA1F2;
+        letter-spacing: 1px;
+    }
+
+    .inputs {
+        text-align: left;
+        margin-top: 30px;
+    }
+
+    label, input, button {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    label {
+        margin-bottom: 4px;
+    }
+
+        label:nth-of-type(2) {
+            margin-top: 12px;
+        }
+
+    input::placeholder {
+        color: gray;
+    }
+
+    input {
+        background: #ecf0f3;
+        padding: 10px;
+        padding-left: 20px;
+        height: 50px;
+        font-size: 14px;
+        border-radius: 50px;
+        box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+        margin-top: 22px
+    }
+
+    button {
+        color: white;
+        margin-top: 20px;
+        background: #1DA1F2;
+        height: 40px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 900;
+        box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+        transition: 0.5s;
+    }
+
+        button:hover {
+            box-shadow: none;
+        }
+
+    a {
+        position: absolute;
+        font-size: 8px;
+        bottom: 4px;
+        right: 4px;
+        text-decoration: none;
+        color: black;
+        background: yellow;
+        border-radius: 10px;
+        padding: 2px;
+    }
+
+    h1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+</style>

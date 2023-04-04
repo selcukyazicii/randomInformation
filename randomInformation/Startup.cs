@@ -1,3 +1,7 @@
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +28,12 @@ namespace randomInformation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSingleton<IInformationService, InformationManager>();
+            services.AddSingleton<IInformationDal, EfInformationDal>();
+            services.AddSingleton<IGameService, GameManager>();
+            services.AddSingleton<IGameDal, EfGameDal>();
+            services.AddSingleton<IGame2Dal, EfGame2Dal>();
+            services.AddSingleton<IGame2Service, Game2Manager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +60,7 @@ namespace randomInformation
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Game}/{action=TruthOrDare}/{id?}");
             });
         }
     }

@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace Entity.Concrete
 {
-    public class Information:IEntity
+    public class Game2:IEntity
     {
         [Key]
         public int id { get; set; }
+        public int game_type { get; set; }
         public string content { get; set; }
     }
 }

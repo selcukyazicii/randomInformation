@@ -20,7 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Entity\Entity.csproj" />
-    <ProjectReference Include="..\randomInformation\randomInformation.csproj" />
   </ItemGroup>
 
 </Project>
