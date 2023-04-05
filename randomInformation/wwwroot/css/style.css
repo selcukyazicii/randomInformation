@@ -1,6 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
-
-input {
+﻿input {
     caret-color: red;
 }
 
@@ -16,7 +14,7 @@ body {
     place-items: center;
     overflow: hidden;
     font-family: poppins;
-    background-color:aqua;
+    background-image: url(//wwwroot/maviMor.jpg);
 }
 
 .container {
@@ -95,7 +93,7 @@ button {
 
 a {
     position: absolute;
-    font-size: 8px;
+    font-size: 45px;
     bottom: 4px;
     right: 4px;
     text-decoration: none;
