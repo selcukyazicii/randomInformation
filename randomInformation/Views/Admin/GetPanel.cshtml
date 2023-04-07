@@ -1,0 +1,67 @@
+﻿@model Entity.Concrete.Game
+@{
+    ViewData["Title"] = "GetPanel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body style="width:450px;">
+    <form id="asparagas" asp-controller="Admin">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Doğruluk</label>
+            <input type="text" asp-for="content" class="form-control" id="formGroupExampleInput" placeholder="Doğruluk Giriniz">
+        </div>
+        <button type="submit" class="btn btn-success" onclick="DogrulukEkle()">Ekle</button>
+        <br />
+    </form>
+</body>
+@section Scripts{
+    <script>
+        function DogrulukEkle() {
+            var form = $("#asparagas").serialize();
+            console.log(form);
+            $.ajax({
+                url: "/Admin/AddContents/",
+                datatype: "json",
+                type: "POST",
+                content: "application/json;",
+                data: form,
+                async: true,
+                success: function (result) {
+                    if (result.Success) {
+                        alert("başarılı");
+                    }
+                    else {
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function CesaretEkle() {
+            var form = $("#asparagas").serialize();
+            console.log(form);
+            $.ajax({
+                url: "/Admin/AddContents2/",
+                datatype: "json",
+                type: "POST",
+                content: "application/json;",
+                data: form,
+                async: true,
+                success: function (result) {
+                    if (result.Success) {
+                        alert("başarılı");
+                    }
+                    else {
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+    </script>
+
+}

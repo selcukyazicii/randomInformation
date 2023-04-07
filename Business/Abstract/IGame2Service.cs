@@ -1,4 +1,5 @@
-﻿using Entity.Concrete;
+﻿using Core.Utilties.Results;
+using Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Business.Abstract
     {
         Game2 GetDare();
         List<Game2> GetAll();
+        IResult AddContent(Game2 game);
 
     }
 }

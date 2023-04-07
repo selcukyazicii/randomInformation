@@ -21,6 +21,14 @@ namespace Business.Concrete
             _game2Dal=game2Dal;
             
         }
+
+        public IResult AddContent(Game game)
+        {
+            game.game_type = 1;
+            _gameDal.Add(game);
+            return new SuccessResult("asd");
+        }
+
         public List<Game> GetAll()
         {
             var result = _gameDal.GetAll();

@@ -12,5 +12,8 @@ namespace Business.Abstract
     {
         List<Game> GetAll();
         Game GetTruth();
+        IResult AddContent(Game game);
+
+
     }
 }

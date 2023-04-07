@@ -14,9 +14,12 @@ body {
     place-items: center;
     overflow: hidden;
     font-family: poppins;
-    background-image: url(//wwwroot/maviMor.jpg);
 }
-
+#ekmek {
+    font-family: 'Alkatra', cursive;
+    font-family: 'Delicious Handrawn', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+}
 .container {
     position: relative;
     width: 350px;
@@ -78,7 +81,7 @@ input {
 button {
     color: white;
     margin-top: 20px;
-    background: #1DA1F2;
+    background: #F50F0F;
     height: 40px;
     border-radius: 20px;
     cursor: pointer;
@@ -90,10 +93,29 @@ button {
     button:hover {
         box-shadow: none;
     }
+   /*@keyframes ornek{
+       from{
+           background-color:black;
 
+       }
+        to {
+            background-color:aqua;
+
+        }
+    }*/
+
+h3 {
+    font-family: 'Alkatra', cursive;
+    font-family: 'Delicious Handrawn', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align:center;
+}
+/*.inputs {
+    background-color: #F5A882;
+}*/
 a {
     position: absolute;
-    font-size: 12px;
+    font-size: 15px;
     bottom: 4px;
     right: 4px;
     text-decoration: none;

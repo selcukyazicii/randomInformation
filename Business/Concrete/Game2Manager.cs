@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilties.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
@@ -16,6 +17,13 @@ namespace Business.Concrete
         public Game2Manager(IGame2Dal game2Dal)
         {
             _game2Dal = game2Dal;
+        }
+
+        public IResult AddContent(Game2 game)
+        {
+            game.game_type = 1;
+            _game2Dal.Add(game);
+            return new SuccessResult("asd");
         }
 
         public List<Game2> GetAll()

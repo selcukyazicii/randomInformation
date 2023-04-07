@@ -1,0 +1,31 @@
+﻿@model Entity.Concrete.LoginRequest
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <form asp-controller="Admin" asp-action="Login" method="post">
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" class="form-control" asp-for="username" placeholder="Enter Username">
+                <span asp-validation-for="username" class="alert-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" asp-for="password" placeholder="Enter Password">
+                <span asp-validation-for="password" class="alert-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
