@@ -8,15 +8,16 @@
 <form enctype="multipart/form-data">
     <div class="container">
         <div class="brand-logo"></div>
-        <div style="margin-top:65px;">
-            <div id="ekmek" class="brand-title">Doğruluk Cesaretlilik ?</div>
-            <button id="truth" onclick="Truth()" type="button">DOĞRULUK</button>
+        <div>
+            @*<div id="ekmek" class="brand-title">? Doğruluk mu Cesaretlik mi ?</div>*@
+            <img src="~/logo.png" style="width:270px;" />
+            <button id="truth" style="background-color: #e3b226; font-family: 'Alkatra', cursive;font-size:18px" onclick="Truth()" type="button">DOĞRULUK</button>
             <div class="inputs">
-                <h3 id="deneme"></h3>
+                <h3 id="deneme" style="color: cornsilk; font-family: 'PTSerif-Bold';font-size:22px;"></h3>
             </div>
-            <button onclick="Dare()" type="button">CESARET</button>
+            <button onclick="Dare()" style="color: cornsilk; font-family: 'Alkatra', cursive; font-size: 18px" type="button">CESARET</button>
+            <a href="https://www.instagram.com/selckyzci/" target="_blank">developed by selckyzci</a>
         </div>
-        <a href="https://instagram.com/selckyzci" target="_blank">developed by selckyzci </a>
     </div>
 </form>
 
@@ -41,7 +42,7 @@
                 }
             })
         }
-       
+
     </script>
 }
 <script src="~/lib/jquery/dist/jquery.js"></script>

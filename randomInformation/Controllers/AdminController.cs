@@ -44,7 +44,7 @@ namespace randomInformation.Controllers
         }
         public JsonResult AddContents2(Game2 game)
         {
-            var list = _game2Service.AddContent(game);
+            var list = _game2Service.AddContents(game);
             return Json(list);
         }
         [HttpPost]
@@ -53,7 +53,7 @@ namespace randomInformation.Controllers
             if (ModelState.IsValid)
             {
                 if (loginRequest.username == "admin"
-                 && loginRequest.password == "allah")
+                 && loginRequest.password == "123")
                 {
                     var claims = new List<Claim>
                     {

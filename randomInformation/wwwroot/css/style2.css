@@ -1,7 +1,10 @@
 ﻿input {
     caret-color: red;
 }
-
+@font-face {
+    font-family: 'PTSerif-Bold';
+    src: url('file:///C:\Users\selck\source\repos\randomInformation\randomInformation\wwwroot\fonts\PTSerif-Bold.ttf') format('truetype');
+}
 body {
     margin: 0;
     width: 100vw;
@@ -15,11 +18,13 @@ body {
     overflow: hidden;
     font-family: poppins;
 }
+
 #ekmek {
     font-family: 'Alkatra', cursive;
     font-family: 'Delicious Handrawn', cursive;
     font-family: 'Josefin Sans', sans-serif;
 }
+
 .container {
     position: relative;
     width: 350px;
@@ -27,7 +32,7 @@ body {
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
-    background: #ecf0f3;
+    background: #1970ff;
     box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
@@ -37,7 +42,7 @@ body {
     margin-top: 10px;
     font-weight: 900;
     font-size: 1.8rem;
-    color: #1DA1F2;
+    color: #d5eced;
     letter-spacing: 1px;
 }
 
@@ -93,7 +98,7 @@ button {
     button:hover {
         box-shadow: none;
     }
-   /*@keyframes ornek{
+/*@keyframes ornek{
        from{
            background-color:black;
 
@@ -108,14 +113,14 @@ h3 {
     font-family: 'Alkatra', cursive;
     font-family: 'Delicious Handrawn', cursive;
     font-family: 'Josefin Sans', sans-serif;
-    text-align:center;
+    text-align: center;
 }
 /*.inputs {
     background-color: #F5A882;
 }*/
 a {
     position: absolute;
-    font-size: 15px;
+    font-size: 10px;
     bottom: 4px;
     right: 4px;
     text-decoration: none;

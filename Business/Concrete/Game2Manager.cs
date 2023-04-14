@@ -19,7 +19,7 @@ namespace Business.Concrete
             _game2Dal = game2Dal;
         }
 
-        public IResult AddContent(Game2 game)
+        public IResult AddContents(Game2 game)
         {
             game.game_type = 1;
             _game2Dal.Add(game);

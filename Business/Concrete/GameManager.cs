@@ -37,7 +37,7 @@ namespace Business.Concrete
 
         public Game GetTruth()
         {
-            var countOfTruth=_gameDal.GetAll().Count();
+            var countOfTruth=_gameDal.GetAll().Count()+1;
             var random = new Random().Next(1, countOfTruth);
             return _gameDal.Get(x=>x.id==random);
         }

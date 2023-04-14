@@ -12,7 +12,7 @@ namespace Business.Abstract
     {
         Game2 GetDare();
         List<Game2> GetAll();
-        IResult AddContent(Game2 game);
+        IResult AddContents(Game2 game);
 
     }
 }
