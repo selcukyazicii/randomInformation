@@ -22,20 +22,20 @@ namespace Business.Concrete
 
         public IResult AddContent(TruthOrDareVM game)
         {
-            Game games = new Game();
+            Truth games = new Truth();
             games.game_type = 1;
             games.content=game.content;
             _gameDal.Add(games);
             return new SuccessResult("Başarılı");
         }
 
-        public List<Game> GetAll()
+        public List<Truth> GetAll()
         {
             var result = _gameDal.GetAll();
             return result;
         }
 
-        public Game GetTruth()
+        public Truth GetTruth()
         {
             var countOfTruth=_gameDal.GetAll().Count();
             var random = new Random().Next(1, countOfTruth);

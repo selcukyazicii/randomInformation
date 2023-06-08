@@ -18,7 +18,7 @@ namespace randomInformation.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(new Game());
+            return View(new Truth());
         }
         public JsonResult GetTruth()
         {
@@ -32,7 +32,7 @@ namespace randomInformation.Controllers
         }
         public IActionResult TruthOrDare()
         {
-            return View(new Game());
+            return View(new Truth());
         }
     }
 }

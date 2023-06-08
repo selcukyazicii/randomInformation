@@ -35,7 +35,6 @@ namespace randomInformation
                 opt.LoginPath = "/Admin/Login/";
             });
             services.AddSingleton<IInformationService, InformationManager>();
-            services.AddSingleton<IInformationDal, EfInformationDal>();
             services.AddSingleton<IGameService, GameManager>();
             services.AddSingleton<IGameDal, EfGameDal>();
             services.AddSingleton<IGame2Dal, EfGame2Dal>();

@@ -15,10 +15,9 @@ namespace DataAccess.Concrete.EntityFramework
             optionsBuilder.UseSqlServer("server=DESKTOP-D5IEUUD\\SQLEXPRESS;database=random_information;integrated security=true;");
 
         }
-        public DbSet<Information> Informations { get; set; }
-        public DbSet<Game> Games { get; set; }
+        public DbSet<Truth> Games { get; set; }
         public DbSet<GameType> GameTypes { get; set; }
-        public DbSet<Game2> Games2 { get; set; }
+        public DbSet<Dare> Games2 { get; set; }
 
     }
 }

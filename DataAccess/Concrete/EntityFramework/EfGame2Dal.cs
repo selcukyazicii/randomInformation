@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfGame2Dal : EfEntityRepositoryBase<Game2, InformationContext>, IGame2Dal
+    public class EfGame2Dal : EfEntityRepositoryBase<Dare, InformationContext>, IGame2Dal
     {
     }
 }

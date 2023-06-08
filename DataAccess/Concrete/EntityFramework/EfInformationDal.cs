@@ -9,7 +9,5 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfInformationDal: EfEntityRepositoryBase<Information, InformationContext>, IInformationDal
-    {
-    }
+   
 }

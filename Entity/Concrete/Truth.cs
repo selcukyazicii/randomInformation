@@ -2,13 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Entity.Concrete
 {
-    public class Game:IEntity
+    [Table("Games")]
+    public class Truth:IEntity
     {
         [Key]
         public int id { get; set; }

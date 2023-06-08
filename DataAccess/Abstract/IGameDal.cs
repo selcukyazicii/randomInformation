@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IGameDal:IEntityRepository<Game>
+    public interface IGameDal:IEntityRepository<Truth>
     {
     }
 }

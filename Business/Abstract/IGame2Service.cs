@@ -11,8 +11,8 @@ namespace Business.Abstract
 {
     public interface IGame2Service
     {
-        Game2 GetDare();
-        List<Game2> GetAll();
+        Dare GetDare();
+        List<Dare> GetAll();
         IResult AddContents(TruthOrDareVM game);
 
     }
