@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entity.Concrete;
+using Entity.Concrete.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -37,13 +38,15 @@ namespace randomInformation.Controllers
         {
             return View();
         }
-        public JsonResult AddContents(Game game)
+        public JsonResult AddContents(TruthOrDareVM game)
         {
+
             var list=_gameService.AddContent(game);
             return Json(list);
         }
-        public JsonResult AddContents2(Game2 game)
+        public JsonResult AddContents2(TruthOrDareVM game)
         {
+
             var list = _game2Service.AddContents(game);
             return Json(list);
         }

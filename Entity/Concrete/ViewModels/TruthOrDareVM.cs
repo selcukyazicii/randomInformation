@@ -9,8 +9,11 @@ namespace Entity.Concrete.ViewModels
 {
     public class TruthOrDareVM
     {
-        public Game Game { get; set; }
-        public Game2 Game2 { get; set; }
+        public int id { get; set; }
+        public int game_type { get; set; }
+        public string? content { get; set; }
+        public string? content2 { get; set; }
+
 
     }
 }

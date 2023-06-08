@@ -2,6 +2,7 @@
 using Core.Utilties.Results;
 using DataAccess.Abstract;
 using Entity.Concrete;
+using Entity.Concrete.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +15,18 @@ namespace Business.Concrete
     public class GameManager:IGameService
     {
         private readonly IGameDal _gameDal;
-        private readonly IGame2Dal _game2Dal;
-        public GameManager(IGameDal gameDal,IGame2Dal game2Dal)
+        public GameManager(IGameDal gameDal)
         {
             _gameDal = gameDal;
-            _game2Dal=game2Dal;
-            
         }
 
-        public IResult AddContent(Game game)
+        public IResult AddContent(TruthOrDareVM game)
         {
-            game.game_type = 1;
-            _gameDal.Add(game);
-            return new SuccessResult("asd");
+            Game games = new Game();
+            games.game_type = 1;
+            games.content=game.content;
+            _gameDal.Add(games);
+            return new SuccessResult("Başarılı");
         }
 
         public List<Game> GetAll()
@@ -37,7 +37,7 @@ namespace Business.Concrete
 
         public Game GetTruth()
         {
-            var countOfTruth=_gameDal.GetAll().Count()+1;
+            var countOfTruth=_gameDal.GetAll().Count();
             var random = new Random().Next(1, countOfTruth);
             return _gameDal.Get(x=>x.id==random);
         }

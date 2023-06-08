@@ -34,11 +34,12 @@
         }
 
         function Dare() {
+            debugger;
             $.ajax({
                 url: "/Game/GetDare/",
                 method: "Get",
                 success: function (data) {
-                    document.getElementById('deneme').innerHTML = data.content;
+                    document.getElementById('deneme').innerHTML = data.content2;
                 }
             })
         }

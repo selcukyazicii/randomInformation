@@ -3,6 +3,7 @@ using Core.Utilties.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
+using Entity.Concrete.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,13 @@ namespace Business.Concrete
             _game2Dal = game2Dal;
         }
 
-        public IResult AddContents(Game2 game)
+        public IResult AddContents(TruthOrDareVM game)
         {
-            game.game_type = 1;
-            _game2Dal.Add(game);
-            return new SuccessResult("asd");
+            Game2 game2 = new Game2();
+            game2.game_type = 1;
+            game2.content2 = game.content2;
+            _game2Dal.Add(game2);
+            return new SuccessResult("Başarılı");
         }
 
         public List<Game2> GetAll()

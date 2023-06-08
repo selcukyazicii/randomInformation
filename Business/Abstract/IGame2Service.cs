@@ -1,5 +1,6 @@
 ﻿using Core.Utilties.Results;
 using Entity.Concrete;
+using Entity.Concrete.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Business.Abstract
     {
         Game2 GetDare();
         List<Game2> GetAll();
-        IResult AddContents(Game2 game);
+        IResult AddContents(TruthOrDareVM game);
 
     }
 }

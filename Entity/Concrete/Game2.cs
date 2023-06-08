@@ -13,6 +13,7 @@ namespace Entity.Concrete
         [Key]
         public int id { get; set; }
         public int game_type { get; set; }
-        public string content { get; set; }
+        public string content2 { get; set; }
+
     }
 }

@@ -1,32 +1,30 @@
-﻿@model Entity.Concrete.ViewModels.TruthOrDareVM
-@{
+﻿@{
     ViewData["Title"] = "GetPanel";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <body style="width:450px;">
     <form id="form11" asp-controller="Admin">
-        <div class="form-group">
-            <label for="formGroupExampleInput">Doğruluk</label>
-            <input type="text" asp-for="@Model.Game.content" class="form-control" name="content" id="formGroupExampleInput" placeholder="Doğruluk Giriniz">
+        <div id="refresh" name="refresh">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Doğruluk</label>
+                <input type="text" class="form-control" name="content" id="formGroupExampleInput" placeholder="Doğruluk Giriniz">
+            </div>
+            <button type="button" class="btn btn-success" onclick="DogrulukEkle()">Ekle</button>
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <label for="formGroupExampleInput">Cesaret</label>
+                <input type="text" class="form-control" name="content2" id="formGroupsExampleInputCesaret" placeholder="Cesaretlilik Giriniz">
+            </div>
+            <button type="button" class="btn btn-success" onclick="CesaretEkle()">Ekle</button>
         </div>
-        <button type="submit" class="btn btn-success" onclick="DogrulukEkle()">Ekle</button>
-        <br />
-        <br />
-        <br />  
-    </form>
-    <form id="form12" asp-controller="Admin">
-        <div class="form-group">
-            <label for="formGroupExampleInput">Cesaret</label>
-            <input type="text" asp-for="@Model.Game2.content" class="form-control" name="content" id="formGroupsExampleInput" placeholder="Cesaretlilik Giriniz">
-        </div>
-        <button type="submit" class="btn btn-success" onclick="CesaretEkle()">Ekle</button>
     </form>
 </body>
 @section Scripts{
     <script>
         function DogrulukEkle() {
-            debugger;
             var form = $("#form11").serialize();
             console.log(form);
             $.ajax({
@@ -37,8 +35,13 @@
                 data: form,
                 async: true,
                 success: function (result) {
-                    if (result.Success) {
-                        alert('s');
+                    if (result.success) {
+                        document.getElementById("form11").reset();
+                        Swal.fire(
+                            'İşlem Başarılı',
+                            'Devam Et Seri',
+                            'success'
+                        );
                     }
                     else {
                     }
@@ -50,8 +53,7 @@
         }
 
         function CesaretEkle() {
-            debugger;
-            var form = $("#form12").serialize();
+            var form = $("#form11").serialize();
             console.log(form);
             $.ajax({
                 url: "/Admin/AddContents2/",
@@ -61,8 +63,13 @@
                 data: form,
                 async: true,
                 success: function (result) {
-                    if (result.Success) {
-                        alert("başarılı");
+                    if (result.success) {
+                        document.getElementById("form11").reset();
+                        Swal.fire(
+                            'İşlem Başarılı',
+                            'Devam Et Seri',
+                            'success'
+                        );
                     }
                     else {
                     }
