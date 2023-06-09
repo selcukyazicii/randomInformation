@@ -16,7 +16,6 @@ namespace DataAccess.Concrete.EntityFramework
 
         }
         public DbSet<Truth> Games { get; set; }
-        public DbSet<GameType> GameTypes { get; set; }
         public DbSet<Dare> Games2 { get; set; }
 
     }

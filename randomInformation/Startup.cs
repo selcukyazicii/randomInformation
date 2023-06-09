@@ -34,11 +34,10 @@ namespace randomInformation
             {
                 opt.LoginPath = "/Admin/Login/";
             });
-            services.AddSingleton<IInformationService, InformationManager>();
-            services.AddSingleton<IGameService, GameManager>();
-            services.AddSingleton<IGameDal, EfGameDal>();
-            services.AddSingleton<IGame2Dal, EfGame2Dal>();
-            services.AddSingleton<IGame2Service, Game2Manager>();
+            services.AddSingleton<ITruthService, TruthManager>();
+            services.AddSingleton<ITruthDal, EfTruthDal>();
+            services.AddSingleton<IDareDal, EfDareDal>();
+            services.AddSingleton<IDareService, DareManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

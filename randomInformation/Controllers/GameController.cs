@@ -8,9 +8,9 @@ namespace randomInformation.Controllers
 {
     public class GameController : Controller
     {
-        private readonly IGameService _gameService;
-        private readonly IGame2Service _game2Service;
-        public GameController(IGameService gameService,IGame2Service game2Service)
+        private readonly ITruthService _gameService;
+        private readonly IDareService _game2Service;
+        public GameController(ITruthService gameService,IDareService game2Service)
         {
             _gameService = gameService;
             _game2Service = game2Service;   

@@ -15,13 +15,13 @@ namespace randomInformation.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IGameService _gameService;
-        private readonly IGame2Service _game2Service;
+        private readonly ITruthService _truthService;
+        private readonly IDareService _dareService;
 
-        public AdminController(IGameService gameService, IGame2Service game2Service)
+        public AdminController(ITruthService truthService, IDareService dareService)
         {
-            _gameService = gameService;
-            _game2Service = game2Service;
+            _truthService = truthService;
+            _dareService = dareService;
         }
 
         [HttpGet]
@@ -41,13 +41,13 @@ namespace randomInformation.Controllers
         public JsonResult AddContents(TruthOrDareVM game)
         {
 
-            var list=_gameService.AddContent(game);
+            var list= _truthService.AddContent(game);
             return Json(list);
         }
         public JsonResult AddContents2(TruthOrDareVM game)
         {
 
-            var list = _game2Service.AddContents(game);
+            var list = _dareService.AddContents(game);
             return Json(list);
         }
         [HttpPost]
