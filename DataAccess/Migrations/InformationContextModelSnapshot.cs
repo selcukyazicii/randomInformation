@@ -18,25 +18,7 @@ namespace DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("Entity.Concrete.Game", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("game_type")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Games");
-                });
-
-            modelBuilder.Entity("Entity.Concrete.Game2", b =>
+            modelBuilder.Entity("Entity.Concrete.Dare", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -54,22 +36,7 @@ namespace DataAccess.Migrations
                     b.ToTable("Games2");
                 });
 
-            modelBuilder.Entity("Entity.Concrete.GameType", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("game_name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("GameTypes");
-                });
-
-            modelBuilder.Entity("Entity.Concrete.Information", b =>
+            modelBuilder.Entity("Entity.Concrete.Truth", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -79,9 +46,12 @@ namespace DataAccess.Migrations
                     b.Property<string>("content")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("game_type")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
-                    b.ToTable("Informations");
+                    b.ToTable("Games");
                 });
 #pragma warning restore 612, 618
         }

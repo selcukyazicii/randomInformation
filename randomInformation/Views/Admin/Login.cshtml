@@ -14,18 +14,65 @@
 <body>
     <div class="container">
         <form asp-controller="Admin" asp-action="Login" method="post">
-            <div class="form-group">
-                <label for="Username">Username</label>
-                <input type="text" class="form-control" asp-for="username" placeholder="Enter Username">
-                <span asp-validation-for="username" class="alert-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" asp-for="password" placeholder="Enter Password">
-                <span asp-validation-for="password" class="alert-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <label for="username">Kullanıcı Adı:</label>
+            <input type="text" asp-for="username" id="username" name="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Şifre:</label>
+            <input type="password" asp-for="password" id="password" name="password">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Giriş">
+        </div>
         </form>
     </div>
 </body>
 </html>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+            .form-group input[type="submit"] {
+                background-color: #4caf50;
+                color: #fff;
+                cursor: pointer;
+            }
+
+                .form-group input[type="submit"]:hover {
+                    background-color: #45a049;
+                }
+</style>

@@ -34,12 +34,27 @@ namespace Business.Concrete
             var result = _game2Dal.GetAll();
             return result;
         }
+        List<int> selectedNumbers = new List<int>();
 
         public Dare GetDare()
         {
-            var countOfDare = _game2Dal.GetAll().Count();
-            var random = new Random().Next(1, countOfDare);
-            return _game2Dal.Get(x => x.id == random);
+            var idList = _game2Dal.GetAll().Select(s => s.id);
+            var countOfTruth = idList.Max() + 1;
+            var random = new Random();
+            var uniqueRandom = random.Next(1, countOfTruth);
+
+            while (selectedNumbers.Contains(uniqueRandom))
+            {
+                uniqueRandom = random.Next(1, countOfTruth);
+                if (selectedNumbers.Count() == idList.Count())
+                {
+                    selectedNumbers.Clear();
+                }
+            }
+            selectedNumbers.Add(uniqueRandom);
+            return _game2Dal.Get(x => x.id == uniqueRandom);
+
+
         }
     }
 }

@@ -2,6 +2,7 @@
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace randomInformation.Controllers
@@ -10,6 +11,7 @@ namespace randomInformation.Controllers
     {
         private readonly ITruthService _gameService;
         private readonly IDareService _game2Service;
+        private List<Truth> truthList = new List<Truth>();
         public GameController(ITruthService gameService,IDareService game2Service)
         {
             _gameService = gameService;
@@ -23,6 +25,7 @@ namespace randomInformation.Controllers
         public JsonResult GetTruth()
         {
             var result = _gameService.GetTruth();
+            
             return Json(result);
         }
         public JsonResult GetDare()

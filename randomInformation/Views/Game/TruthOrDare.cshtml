@@ -33,12 +33,26 @@
             })
         }
 
+        //function Dare() {
+        //    $.ajax({
+        //        url: "/Game/GetDare/",
+        //        method: "Get",
+        //        success: function (data) {
+        //            document.getElementById('deneme').innerHTML = data.content2;
+        //        }
+        //    })
+        //}
         function Dare() {
             $.ajax({
                 url: "/Game/GetDare/",
                 method: "Get",
                 success: function (data) {
-                    document.getElementById('deneme').innerHTML = data.content2;
+                    var h3Element = document.getElementById("deneme");
+                    h3Element.style.opacity = 0;
+                    setTimeout(function () {
+                        h3Element.innerHTML = data.content2;
+                        h3Element.style.opacity = 1;
+                    }, 500);
                 }
             })
         }
