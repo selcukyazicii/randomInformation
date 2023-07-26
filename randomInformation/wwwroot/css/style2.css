@@ -17,6 +17,8 @@ body {
     place-items: center;
     overflow: hidden;
     font-family: poppins;
+    background-color: #BFD9DF;
+    /*background-image: url("../images/color.jpg");*/
 }
 
 #ekmek {
