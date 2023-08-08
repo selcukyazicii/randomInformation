@@ -14,13 +14,13 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-D5IEUUD\\SQLEXPRESS;database=random_information;integrated security=true;");
-            //2019 server sürümü , publishe alırken bunu kullan //optionsBuilder.UseSqlServer("server=DESKTOP-D5IEUUD\\MSSQLSERVER2022;database=poldipo_project;integrated security=true;");
-
+            //optionsBuilder.UseSqlServer("server=DESKTOP-D5IEUUD\\SQLEXPRESS;database=random_information;integrated security=true;");
+            //optionsBuilder.UseSqlServer("server=DESKTOP-D5IEUUD\\MSSQLSERVER2022;database=poldipo_project;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-D5IEUUD\\MSSQLSERVER2022;database=bidijital_medya;integrated security=true;");
         }
-        
+
         public DbSet<Truth> Games { get; set; }
         public DbSet<Dare> Games2 { get; set; }
-
+        public DbSet<bidijital_contact> Contacts { get; set; }
     }
 }

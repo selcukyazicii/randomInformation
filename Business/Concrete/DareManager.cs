@@ -31,14 +31,14 @@ namespace Business.Concrete
 
         public List<Dare> GetAll()
         {
-            var result = _game2Dal.GetAll();
+            var result = _game2Dal.GetAll(null);
             return result;
         }
         List<int> selectedNumbers = new List<int>();
 
         public Dare GetDare()
         {
-            var idList = _game2Dal.GetAll().Select(s => s.id);
+            var idList = _game2Dal.GetAll(null).Select(s => s.id);
             var countOfTruth = idList.Max() + 1;
             var random = new Random();
             var uniqueRandom = random.Next(1, countOfTruth);

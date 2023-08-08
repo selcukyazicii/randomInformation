@@ -31,13 +31,13 @@ namespace Business.Concrete
 
         public List<Truth> GetAll()
         {
-            var result = _gameDal.GetAll();
+            var result = _gameDal.GetAll(null);
             return result;
         }
         List<int> selectedNumbers = new List<int>();
         public Truth GetTruth()
         {
-            var idList = _gameDal.GetAll().Select(s => s.id);
+            var idList = _gameDal.GetAll(null).Select(s => s.id);
             var countOfTruth = idList.Max() + 1;
             var random = new Random();
             var uniqueRandom = random.Next(1, countOfTruth);

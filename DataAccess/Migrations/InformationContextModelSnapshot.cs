@@ -53,6 +53,30 @@ namespace DataAccess.Migrations
 
                     b.ToTable("Games");
                 });
+
+            modelBuilder.Entity("Entity.Concrete.bidijital_contact", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("bidijital_medya");
+                });
 #pragma warning restore 612, 618
         }
     }

@@ -34,6 +34,7 @@ namespace randomInformation
             {
                 opt.LoginPath = "/Admin/Login/";
             });
+            //scopeda çevir
             services.AddSingleton<ITruthService, TruthManager>();
             services.AddSingleton<ITruthDal, EfTruthDal>();
             services.AddSingleton<IDareDal, EfDareDal>();
