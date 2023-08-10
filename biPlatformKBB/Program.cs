@@ -2,6 +2,8 @@ using Business.Abstract.BiDijitalMedya;
 using Business.Concrete.BiDijitalMedya;
 using DataAccess.Abstract.BiDijitalMedya;
 using DataAccess.Concrete.EntityFramework.BiDijitalMedya;
+using Entity.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +11,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IContactService, ContactManager>();
 builder.Services.AddSingleton<IContactDal, EfContactDal>();
-
+builder.Services.AddSingleton<IAboutUsService, AboutUsManager>();
+builder.Services.AddSingleton<IAboutUsDal, EfAboutUsDal>();
+builder.Services.AddSingleton<IAboutService, AboutManager>();
+builder.Services.AddSingleton<IAboutDal, EfAboutDal>();
+builder.Services.AddTransient<bidijital_about>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(opt =>
+            {
+                opt.LoginPath = "/Admin/Login/";
+            }); 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,12 +35,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Main}/{action=Anasayfa}/{id?}");
+    pattern: "{controller=Admin}/{action=Panel}/{id?}");
 
 app.Run();
 

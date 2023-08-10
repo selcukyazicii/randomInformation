@@ -1,0 +1,110 @@
+﻿@{
+    @model Entity.Concrete.bidijital_about
+    ViewData["Title"] = "Hakkimizda";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Model.question = System.Web.HttpUtility.UrlDecode(Model.question);
+}
+
+<div class="card  box-shadow-0">
+    <div class="card-header">
+        <h4 class="card-title mb-1">Hakkımızda</h4>
+    </div>
+    <div class="card-body pt-0">
+        <form class="form-horizontal" id="aboutus" name="aboutus" method="post" asp-action="AddAboutUs">
+            <div class="form-group">
+                <textarea class="form-control" asp-for="question" id="question" placeholder="Yanıt" ></textarea>
+            </div>
+            <div class="form-group mb-0 mt-3 justify-content-end">
+                <div>
+                    <button type="button" id="aboutAddButton" class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row row-sm">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="card-title mg-b-0">Hakkımızda Düzenleme Ekranı</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive userlist-table">
+                        <table id="tableHakkimizda" class="table text-md-nowrap table-bordered ">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section viewScript{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#tableHakkimizda').DataTable({
+                "ajax": {
+                    url: "/Admin/ListAbout/",
+                    type: "GET",
+                    content: "application/json",
+                    dataType: "json",
+                    dataSrc: "Data"
+                },
+                "pageLength": 100,
+                columns: [
+                    {
+                        data: "id", width: '60px',
+                        render: function (data, type) {
+                            if (type === 'display') {
+                                return '' +
+                                    '<a href="#" class="btn btn-sm btn-info btn-b">' +
+                                    '   <i class="las la-pen"></i>' +
+                                    '</a>' +
+                                    '<a href="#" class="btn btn-sm btn-danger">' +
+                                    '   <i class="las la-trash"></i>' +
+                                    '</a>';
+                            }
+                            return data;
+                        }
+                    },
+                    { data: 'id', title: 'Id', width: '10px' },
+                    { data: 'question', title: 'Hakkımızda' },
+                ]
+            });
+        });
+
+
+
+
+
+        $("#aboutAddButton").click(function () {
+            debugger;
+            var question = CKEDITOR.instances['question'].getData();
+            var formData = new FormData();
+            formData.append("question", question);
+            $.ajax({
+                method: "POST",
+                url: "/Admin/AddAboutUs/",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    console.log(result);
+                    if (result.success) {
+                        Swal.fire({ icon: 'success', title: 'Hakkımızda  Ekleme İşlemi Başarılı', showConfirmButton: true });
+                    }
+                    else {
+                        Swal.fire({ title: "Uyarı", text: err.status + "-" + err.statusText, icon: "error", confirmButtonText: "Tamam" });
+                    }
+                },
+                error: function (err) {
+                    Swal.fire({ title: "Uyarı", text: err.status + "-" + err.statusText, icon: "error", confirmButtonText: "Tamam" });
+                }
+
+
+            });
+        });
+        CKEDITOR.replace('question');
+    </script>
+}

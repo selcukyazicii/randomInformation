@@ -54,6 +54,39 @@ namespace DataAccess.Migrations
                     b.ToTable("Games");
                 });
 
+            modelBuilder.Entity("Entity.Concrete.bidijital_about", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("question")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("state")
+                        .HasColumnType("bit");
+
+                    b.HasKey("id");
+
+                    b.ToTable("bidijital_about");
+                });
+
+            modelBuilder.Entity("Entity.Concrete.bidijital_about_us", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("question")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("bidjital_about_us");
+                });
+
             modelBuilder.Entity("Entity.Concrete.bidijital_contact", b =>
                 {
                     b.Property<int>("id")
@@ -70,12 +103,15 @@ namespace DataAccess.Migrations
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("subject")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
-                    b.ToTable("bidijital_medya");
+                    b.ToTable("bidijital_contact");
                 });
 #pragma warning restore 612, 618
         }
