@@ -13,11 +13,9 @@ namespace drone.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IAboutUsService _aboutUsService;
         private readonly IAboutService _aboutService;
-        public AdminController(IAboutUsService aboutUsService, IAboutService aboutService)
+        public AdminController(IAboutService aboutService)
         {
-            _aboutUsService = aboutUsService;
             _aboutService = aboutService;
         }
         public IActionResult Index()
@@ -76,6 +74,7 @@ namespace drone.Controllers
         {
             return View();
         }
+        #region About
         public async Task<IActionResult> AddAboutUs(bidijital_about about)
         {
             if (about != null)
@@ -83,12 +82,33 @@ namespace drone.Controllers
                 await _aboutService.AddAboutUs(about);
                 return Json(new ResultModel { Success = true, Message = Messages.SuccessAddMessage });
             }
-            return Json(new ResultModel { Success = false, Message = Messages.Error});
+            return Json(new ResultModel { Success = false, Message = Messages.Error });
         }
         public async Task<JsonResult> ListAbout()
         {
             var result = await _aboutService.AboutList();
-            return Json(new ResultModel { Data= result,Message=Messages.Success ,Success=true});
+            return Json(new ResultModel { Data = result, Message = Messages.Success, Success = true });
         }
+        public async Task<IActionResult> DeleteAbout(int id = 0)
+        {
+            await _aboutService.DeleteAbout(id);
+            return Json(new ResultModel { Success = true });
+        }
+        public async Task<IActionResult> AboutDetails(int id)
+        {
+            bidijital_about about;
+
+            if (id > 0)
+            {
+                about = await _aboutService.GetById(id);
+            }
+            else
+            {
+                about = new bidijital_about();
+            }
+            return PartialView("_InfoAbout", about);
+        }
+        #endregion
+
     }
 }

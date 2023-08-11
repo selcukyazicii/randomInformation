@@ -49,19 +49,20 @@
                     type: "GET",
                     content: "application/json",
                     dataType: "json",
-                    dataSrc: "Data"
                 },
                 "pageLength": 100,
                 columns: [
                     {
                         data: "id", width: '60px',
                         render: function (data, type) {
+                            console.log(data)
+
                             if (type === 'display') {
                                 return '' +
-                                    '<a href="#" class="btn btn-sm btn-info btn-b">' +
+                                    '<a href="#" class="btn btn-sm btn-info btn-b" onclick="AboutInfo(' + data + ')" >' +
                                     '   <i class="las la-pen"></i>' +
                                     '</a>' +
-                                    '<a href="#" class="btn btn-sm btn-danger">' +
+                                    '<a href="#" class="btn btn-sm btn-danger" onclick="DeleteAbout(' + data + ')">' +
                                     '   <i class="las la-trash"></i>' +
                                     '</a>';
                             }
@@ -73,10 +74,6 @@
                 ]
             });
         });
-
-
-
-
 
         $("#aboutAddButton").click(function () {
             debugger;
@@ -92,6 +89,8 @@
                 success: function (result) {
                     console.log(result);
                     if (result.success) {
+                        $('#aboutus')[0].reset();
+                        $('#tableHakkimizda').DataTable().ajax.reload();
                         Swal.fire({ icon: 'success', title: 'Hakkımızda  Ekleme İşlemi Başarılı', showConfirmButton: true });
                     }
                     else {
@@ -106,5 +105,54 @@
             });
         });
         CKEDITOR.replace('question');
+         
+        function DeleteAbout(value) {
+            Swal.fire({
+                title: 'Uyarı',
+                text: "Silmek İstediğinize Emin misiniz?!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Evet',
+                cancelButtonText: 'İptal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/Admin/DeleteAbout?id=' + value,
+                        type: 'GET',
+                        success: function (result) {
+                            if (result.success) {
+                                $('#tableHakkimizda').DataTable().ajax.reload();
+                                Swal.fire({ title: "Bilgi", text: "Kayıt Silindi", icon: "success", confirmButtonText: "Tamam" });
+                            }
+                            else {
+                                Swal.fire({ title: "Uyarı", text: result.Message, icon: "error", confirmButtonText: "Tamam" });
+                            }
+                        },
+                        error: function (err) {
+                            Swal.fire({ title: "Uyarı", text: err.status + "-" + err.statusText, icon: "error", confirmButtonText: "Tamam" });
+                        }
+                    });
+                }
+            });
+
+        }
+        function AboutInfo(value) {
+            $.ajax({
+                url: '/Admin/AboutDetails?id=' + value,
+                type: 'GET',
+                success: function (response) {
+                    $('#divResult1').html(response);
+                },
+                error: function (err) {
+                    Swal.fire({ title: "Uyarı", text: err.status + "-" + err.statusText, icon: "error", confirmButtonText: "Tamam" });
+                }
+            });
+        }
+
+        $(function () {
+            $('#infoAbout').modal('show');
+        })
     </script>
 }

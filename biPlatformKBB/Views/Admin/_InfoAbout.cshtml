@@ -1,0 +1,48 @@
+﻿@{
+    @model Entity.Concrete.bidijital_about
+    Model.question = System.Web.HttpUtility.UrlDecode(Model.question);
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="modal" id="infoAbout" name="infoAbout" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <form id="formAbouts" name="formAbouts" enctype="multipart/form-data">
+                <div class="modal-header pd-20">
+                    <h6 class="modal-title">Hizmet Detay Formu</h6><button aria-label="Close" class="close" onclick="ModalKapat()" type="button"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <input type="hidden" asp-for="id" id="id" />
+
+                <div class="modal-body pd-10">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="id" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">İçerik</label>
+                        <textarea id="question" asp-for="question" class="form-control" style="height:350px"></textarea>
+                        <span asp-validation-for="question" class="text-danger"></span>
+                    </div>
+                    <div class="modal-footer pd-20">
+                        <button type="button" id="btnHizmetKaydet" class="btn btn-primary">Kaydet</button>
+                        <button type="button" class="btn btn-secondary" onclick="ModalKapat()">Kapat</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section viewScript{
+    <script type="text/javascript">
+        CKEDITOR.replace('question');
+        $(function () {
+            $('#infoAbout').modal('show');
+        })
+
+        function ModalKapat(){
+            $("#infoAbout").remove();
+        $(".modal-backdrop.show").remove();
+        }
+    </script>
+
+}

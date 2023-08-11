@@ -30,8 +30,16 @@
     <link href="~/adminassets/plugins/perfect-scrollbar/p-scrollbar.css" rel="stylesheet" />
 
     <!--  Right-sidemenu css -->
+    <link href="~/last/datatables/css/jquery.contextmenu.css" rel="stylesheet" />
+     <link href="https://cdn.datatables.net/rowgroup/1.1.4/css/rowGroup.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/searchbuilder/1.3.0/css/searchBuilder.dataTables.min.css" rel="stylesheet" />
+    <link href="~/last/datatables/css/datatables.min.css" rel="stylesheet" />
+    <link href="~/last/datatables/css/responsive.datatables.min.css" rel="stylesheet" />
+<link href="~/last/datatables/css/responsive.bootstrap5.css" rel="stylesheet" />
     <link href="~/adminassets/plugins/sidebar/sidebar.css" rel="stylesheet">
-
+<link href="~/last/datatables/css/buttons.bootstrap5.min.css" rel="stylesheet" />
+    <link href="~/last/datatables/css/jquery.datatables.min.css" rel="stylesheet" />
+    <link href="~/last/datatables/css/jquery.contextmenu.css" rel="stylesheet" />
     <!-- Sidemenu css -->
     <link rel="stylesheet" href="~/adminassets/css/sidemenu.css">
 
@@ -698,6 +706,7 @@
         </div>
         <!--/Sidebar-right-->
         <!-- Message Modal -->
+        <div id="divResult1"></div>
         <div class="modal fade" id="chatmodel" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-right chatbox" role="document">
                 <div class="modal-content chat border-0">
@@ -1005,17 +1014,26 @@
     <!-- custom js -->
     <script src="~/adminassets/js/custom.js"></script>
     <!--CK Editor-->
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
     <script src="~/assets/js/sweetalert2.min.js"></script>
 
 
     <script src="~/last/datatables/js/jquery.datatables.min.js"></script>
     <script src="~/last/datatables/js/datatables.bootstrap4.js"></script>
+    
 
 
 
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+  
+
+
+
+
+
+
     <!--DataTable-->
-  @*  <script src="~/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="~/assets/js/dataTables.fixedHeader.js"></script>
     <script src="~/assets/js/jquery.contextMenu.js"></script>
     <script src="~/assets/plugins/datatable/datatables.min.js"></script>
@@ -1032,10 +1050,18 @@
     <script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js"></script>
     <script src="https://cdn.datatables.net/searchbuilder/1.3.0/js/dataTables.searchBuilder.min.js"></script>
     <script src="https://cdn.datatables.net/rowgroup/1.1.4/js/dataTables.rowGroup.min.js"></script>
-    <script src="~/assets/plugins/datatable/js/dataTables.select.js"></script>*@
+    <script src="~/assets/plugins/datatable/js/dataTables.select.js"></script>
     <!--Internal  Datatable js -->
     <script src="~/assets/js/table-data.js"></script>
     @RenderSection("viewScript", false)
-
+    <script>
+          $(document).ready(function ()
+        {
+            $.extend($.fn.dataTable.defaults, {
+                iDisplayLength: 100,
+                language: { url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json" }
+            });
+        });
+    </script>
 </body>
 </html>
